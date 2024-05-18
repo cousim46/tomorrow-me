@@ -24,7 +24,7 @@ public class Account extends BaseEntity {
         this.password = password;
         this.salt = salt;
     }
-    public static Account singUp(String phone, String encryPassword, String salt) {
-        return new Account(phone, encryPassword, salt);
+    public static Account singUp(String phone, String encryptPassword, String salt) {
+        return new Account(phone, encryptPassword, salt);
     }
 }
