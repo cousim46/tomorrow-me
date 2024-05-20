@@ -25,6 +25,18 @@ class AccountControllerTest {
     @MockBean
     private AccountWriteService accountWriteService;
 
+    @DisplayName("핸드폰 번호와 키워드로 회원가입을 할 수 있다.")
+    @Test
+    void signUp() throws Exception {
+        //given
+        SignUp signUp = new SignUp("01012341234", "keyword");
+        //when && then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/account")
+                .content(objectMapper.writeValueAsString(signUp))
+                .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
     @DisplayName("핸드폰 번호가 비어 있으면 예외가 발생한다.")
     @Test
     void occurPhoneBlankException() throws Exception {
