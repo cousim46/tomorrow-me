@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import tomorrowme.todo.api.controller.account.AccountController;
 import tomorrowme.todo.api.controller.account.dto.request.SignUp;
-import tomorrowme.todo.api.service.AccountWriteService;
+import tomorrowme.todo.api.service.account.AccountWriteService;
 
 @WebMvcTest(controllers = AccountController.class)
 class AccountControllerTest {

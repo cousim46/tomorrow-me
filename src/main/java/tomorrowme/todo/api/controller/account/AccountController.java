@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tomorrowme.todo.api.controller.account.dto.request.SignUp;
-import tomorrowme.todo.api.service.AccountWriteService;
+import tomorrowme.todo.api.service.account.AccountWriteService;
 
 @RequiredArgsConstructor
 @RestController

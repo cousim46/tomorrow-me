@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import tomorrowme.todo.api.service.account.AccountWriteService;
 import tomorrowme.todo.domain.account.Account;
 import tomorrowme.todo.domain.account.AccountRepository;
 
