@@ -35,4 +35,7 @@ public class CommonResponse<T> {
     public static <T>CommonResponse<T> conflict(String message) {
         return new CommonResponse<>(HttpStatus.CONFLICT, message);
     }
+    public static <T>CommonResponse<T> badRequest(String message) {
+        return new CommonResponse<>(HttpStatus.BAD_REQUEST, message);
+    }
 }
