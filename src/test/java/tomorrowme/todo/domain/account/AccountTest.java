@@ -1,26 +1,27 @@
 package tomorrowme.todo.domain.account;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class AccountTest {
 
-    @DisplayName("전화번호, 비밀번호, 패스워드를 통해 사용자를 생성한다.")
+    @DisplayName("핸드폰 번호와 키워드로 회원을 생성한다.")
     @Test
-    void singUp() {
+    void signUp() {
         //given
-        String phone = "01011112222";
-        String password = "test";
-        String salt = "salt";
+        String phone = "01012341234";
+        String keyword = "keyword";
 
         //when
-        Account account = Account.singUp(phone, password, salt);
+        Account account = Account.singUp(phone, keyword);
 
         //then
+        assertThat(account).isNotNull();
+        assertThat(account.getKeyword()).isEqualTo(keyword);
         assertThat(account.getPhone()).isEqualTo(phone);
-        assertThat(account.getPassword()).isEqualTo(password);
-        assertThat(account.getSalt()).isEqualTo(salt);
     }
 }
