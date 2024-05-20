@@ -9,11 +9,6 @@
 그래서 전날에 의욕이 넘칠 때 다음날 계획을 작성하면 많은 양의 계획을 세우고 내일의 나 자신이 만족스러운 삶을 살 수 있다고 생각이 되어 시작하게 되었다.
 
 ## 기술 스택
-
-### Front
-- Thymeleaf
-
-### Back
 - Spring Boot
 - Spring Data JPA
 - MySQL
