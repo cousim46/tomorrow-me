@@ -1,5 +1,7 @@
 package tomorrowme.todo.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,5 +16,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(
             CommonResponse.of(exception.getExceptionStatus(), exception.getExceptionMessage()),
             exception.getExceptionStatus());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<CommonResponse> dataIntegrityViolationException(DataIntegrityViolationException e) {
+        return new ResponseEntity<>(
+            CommonResponse.conflict(e.getMessage()), HttpStatus.CONFLICT
+        );
     }
 }
