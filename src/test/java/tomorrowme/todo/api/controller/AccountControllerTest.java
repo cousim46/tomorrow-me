@@ -1,7 +1,5 @@
 package tomorrowme.todo.api.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalTime;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import tomorrowme.todo.api.controller.dto.request.SignUp;
+import tomorrowme.todo.api.controller.account.AccountController;
+import tomorrowme.todo.api.controller.account.dto.request.SignUp;
 import tomorrowme.todo.api.service.AccountWriteService;
 
 @WebMvcTest(controllers = AccountController.class)

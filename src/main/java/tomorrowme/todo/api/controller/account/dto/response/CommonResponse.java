@@ -1,4 +1,4 @@
-package tomorrowme.todo.api.controller.dto.response;
+package tomorrowme.todo.api.controller.account.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
