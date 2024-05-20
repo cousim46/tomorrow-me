@@ -18,6 +18,7 @@ public class AccountController {
 
     @PostMapping
     public void signUp(@Valid @RequestBody SignUp signUp) {
-        accountWriteService.singUp(signUp.getPhone(),signUp.getKeyword());
+        accountWriteService.singUp(signUp.phone(), signUp.keyword(), signUp.wakeUpTime(),
+            signUp.sleepTime());
     }
 }

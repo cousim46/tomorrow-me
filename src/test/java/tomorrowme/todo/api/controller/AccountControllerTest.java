@@ -3,6 +3,7 @@ package tomorrowme.todo.api.controller;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,13 @@ class AccountControllerTest {
     @Test
     void signUp() throws Exception {
         //given
-        SignUp signUp = new SignUp("01012341234", "keyword");
+        String phone = "01012341234";
+        String keyword = "keyword";
+        LocalTime wakeUpTime = LocalTime.of(9,0,0);
+        LocalTime sleepTime = LocalTime.of(2,0,0);
+
+        SignUp signUp = new SignUp(phone, keyword, wakeUpTime, sleepTime);
+
         //when && then
         mockMvc.perform(MockMvcRequestBuilders.post("/api/account")
                 .content(objectMapper.writeValueAsString(signUp))
@@ -41,7 +48,11 @@ class AccountControllerTest {
     @Test
     void occurPhoneBlankException() throws Exception {
         //given
-        SignUp signUp = new SignUp(null, "keyword");
+        String keyword = "keyword";
+        LocalTime wakeUpTime = LocalTime.of(9,0,0);
+        LocalTime sleepTime = LocalTime.of(2,0,0);
+
+        SignUp signUp = new SignUp(null, keyword, wakeUpTime, sleepTime);
         //when && then
         mockMvc.perform(MockMvcRequestBuilders.post("/api/account")
             .content(objectMapper.writeValueAsString(signUp))
@@ -56,7 +67,12 @@ class AccountControllerTest {
     @Test
     void occurKeywordBlankException() throws Exception {
         //given
-        SignUp signUp = new SignUp("01012341234", null);
+        String phone = "01012341234";
+        LocalTime wakeUpTime = LocalTime.of(9,0,0);
+        LocalTime sleepTime = LocalTime.of(2,0,0);
+
+        SignUp signUp = new SignUp(phone, null, wakeUpTime, sleepTime);
+
         //when && then
         mockMvc.perform(MockMvcRequestBuilders.post("/api/account")
                 .content(objectMapper.writeValueAsString(signUp))

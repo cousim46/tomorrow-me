@@ -3,6 +3,7 @@ package tomorrowme.todo.api.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.time.LocalTime;
 import java.util.List;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.AfterEach;
@@ -34,9 +35,11 @@ class AccountWriteServiceTest {
         //given
         String phone = "01012341234";
         String keyword = "test";
+        LocalTime wakeUpTime = LocalTime.of(9,0,0);
+        LocalTime sleepTime = LocalTime.of(2,0,0);
 
         //when
-        accountWriteService.singUp(phone, keyword);
+        accountWriteService.singUp(phone, keyword, wakeUpTime, sleepTime);
 
         //then
         List<Account> accounts = accountRepository.findAll();
@@ -53,10 +56,12 @@ class AccountWriteServiceTest {
         //given
         String phone = "01012341234";
         String keyword = "test";
-        accountWriteService.singUp(phone, keyword);
+        LocalTime wakeUpTime = LocalTime.of(9,0,0);
+        LocalTime sleepTime = LocalTime.of(2,0,0);
+        accountWriteService.singUp(phone, keyword, wakeUpTime, sleepTime);
 
         //when && then
-        assertThatThrownBy(() -> accountWriteService.singUp(phone, keyword))
+        assertThatThrownBy(() -> accountWriteService.singUp(phone, keyword, wakeUpTime, sleepTime))
             .isInstanceOf(DataIntegrityViolationException.class)
             .hasMessage("이미 존재하는 정보입니다.");
     }
