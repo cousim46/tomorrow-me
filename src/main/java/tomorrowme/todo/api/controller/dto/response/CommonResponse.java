@@ -32,10 +32,8 @@ public class CommonResponse<T> {
     public static <T>CommonResponse<T> of(HttpStatus status, String message) {
         return of(status,message, null);
     }
-    public static <T>CommonResponse<T> conflict(String message) {
-        return new CommonResponse<>(HttpStatus.CONFLICT, message);
+    public static <T>CommonResponse<T> serverError() {
+        return new CommonResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, "서버 에러");
     }
-    public static <T>CommonResponse<T> badRequest(String message) {
-        return new CommonResponse<>(HttpStatus.BAD_REQUEST, message);
-    }
+
 }
