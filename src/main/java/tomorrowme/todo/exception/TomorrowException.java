@@ -2,6 +2,7 @@ package tomorrowme.todo.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 @RequiredArgsConstructor
 @Getter
@@ -12,12 +13,7 @@ public class TomorrowException extends RuntimeException {
         return tomorrowErrorCode.getMessage();
     }
 
-    public String getExceptionStatus() {
-        return tomorrowErrorCode.getStatus().name();
+    public HttpStatus getExceptionStatus() {
+        return tomorrowErrorCode.getStatus();
     }
-
-    public int getExceptionStatusCode() {
-        return tomorrowErrorCode.getStatus().value();
-    }
-
 }
