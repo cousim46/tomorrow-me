@@ -12,7 +12,7 @@ import tomorrowme.todo.api.controller.dto.response.CommonResponse;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(TomorrowException.class)
-    public ResponseEntity<CommonResponse<Object>> responseTomorrowException(
+    public ResponseEntity<CommonResponse> responseTomorrowException(
         TomorrowException exception) {
         return new ResponseEntity<>(
             CommonResponse.of(exception.getExceptionStatus(), exception.getExceptionMessage()),
@@ -22,13 +22,18 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<CommonResponse> dataIntegrityViolationException(DataIntegrityViolationException e) {
         return new ResponseEntity<>(
-            CommonResponse.conflict(e.getMessage()), HttpStatus.CONFLICT
+            CommonResponse.of(HttpStatus.CONFLICT,e.getMessage()),HttpStatus.CONFLICT
         );
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<CommonResponse<Object>> methodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResponseEntity<CommonResponse> methodArgumentNotValidException(MethodArgumentNotValidException e) {
         return new ResponseEntity<>(
-            CommonResponse.badRequest(e.getFieldErrors().get(0).getDefaultMessage()), HttpStatus.BAD_REQUEST
+            CommonResponse.of(HttpStatus.BAD_REQUEST,e.getFieldErrors().get(0).getDefaultMessage()), HttpStatus.BAD_REQUEST
         );
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<CommonResponse> exception() {
+        return new ResponseEntity<>(CommonResponse.serverError(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
