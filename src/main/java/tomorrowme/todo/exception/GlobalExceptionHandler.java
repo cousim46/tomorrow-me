@@ -3,6 +3,7 @@ package tomorrowme.todo.exception;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import tomorrowme.todo.api.controller.dto.response.CommonResponse;
@@ -22,6 +23,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<CommonResponse> dataIntegrityViolationException(DataIntegrityViolationException e) {
         return new ResponseEntity<>(
             CommonResponse.conflict(e.getMessage()), HttpStatus.CONFLICT
+        );
+    }
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<CommonResponse<Object>> methodArgumentNotValidException(MethodArgumentNotValidException e) {
+        return new ResponseEntity<>(
+            CommonResponse.badRequest(e.getFieldErrors().get(0).getDefaultMessage()), HttpStatus.BAD_REQUEST
         );
     }
 }
