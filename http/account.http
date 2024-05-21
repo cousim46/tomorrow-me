@@ -3,5 +3,7 @@ Content-Type: application/json
 
 {
   "phone": "01012341234",
-  "keyword" : "아으닉네임"
+  "keyword" : "아으닉네임",
+  "wakeUpTime": "09:00:00",
+  "sleepTime": "21:00:00"
 }
