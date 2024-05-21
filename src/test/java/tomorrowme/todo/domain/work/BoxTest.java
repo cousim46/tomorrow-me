@@ -2,6 +2,7 @@ package tomorrowme.todo.domain.work;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,12 +16,14 @@ class BoxTest {
         //given
         String phone = "01012341234";
         String keyword = "keyword";
+        String title = "개발 공부";
         LocalTime wakeUpTime = LocalTime.of(9,0,0);
         LocalTime sleepTime = LocalTime.of(2,0,0);
         Account account = Account.singUp(phone, keyword, wakeUpTime, sleepTime);
+        LocalDate todayDate = LocalDate.now();
 
         //when
-        Box box = Box.create(account);
+        Box box = Box.create(title,account, todayDate);
 
         //then
         assertThat(box.getAccount()).isEqualTo(account);
