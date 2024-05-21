@@ -3,6 +3,7 @@ package tomorrowme.todo.domain.work;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ class BoxTest {
         LocalTime wakeUpTime = LocalTime.of(9,0,0);
         LocalTime sleepTime = LocalTime.of(2,0,0);
         Account account = Account.singUp(phone, keyword, wakeUpTime, sleepTime);
-        LocalDate todayDate = LocalDate.now();
+        LocalDateTime todayDate = LocalDateTime.now();
 
         //when
         Box box = Box.create(title,account, todayDate);

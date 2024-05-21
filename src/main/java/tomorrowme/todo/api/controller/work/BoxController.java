@@ -2,6 +2,7 @@ package tomorrowme.todo.api.controller.work;
 
 import jakarta.validation.Valid;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,6 @@ public class BoxController {
 
     @PostMapping
     public void create(@Valid @RequestBody BoxCreate boxCreate) {
-        boxWriteService.create(boxCreate.phone(), boxCreate.keyword(), boxCreate.title(), LocalDate.now());
+        boxWriteService.create(boxCreate.phone(), boxCreate.keyword(), boxCreate.title(), LocalDateTime.now());
     }
 }

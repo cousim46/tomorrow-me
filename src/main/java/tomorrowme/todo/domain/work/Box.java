@@ -6,6 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,18 +23,18 @@ import tomorrowme.todo.domain.account.Account;
 )
 public class Box extends BaseEntity {
     private String title;
-    private LocalDate registrationDate;
+    private LocalDateTime registrationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Account account;
 
-    private Box(String title, Account account, LocalDate registrationDate) {
+    private Box(String title, Account account, LocalDateTime registrationDate) {
         this.title = title;
         this.account = account;
         this.registrationDate = registrationDate;
     }
 
-    public static Box create(String title,Account account, LocalDate registrationDate) {
+    public static Box create(String title,Account account, LocalDateTime registrationDate) {
         return new Box(title,account, registrationDate);
     }
 }

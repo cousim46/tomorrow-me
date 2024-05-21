@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -44,7 +45,7 @@ class BoxWriteServiceTest {
         String title = "개발 공부";
         LocalTime wakeUpTime = LocalTime.of(9, 0, 0);
         LocalTime sleepTime = LocalTime.of(23, 0, 0);
-        LocalDate todayDate = LocalDate.now();
+        LocalDateTime todayDate = LocalDateTime.now();
         accountRepository.save(
             Account.singUp(phone, keyword, wakeUpTime, sleepTime));
 
@@ -63,7 +64,7 @@ class BoxWriteServiceTest {
         String phone = "01012341234";
         String keyword = "keyword";
         String title = "개발 공부";
-        LocalDate todayDate = LocalDate.now();
+        LocalDateTime todayDate = LocalDateTime.now();
 
         //when
         TomorrowException tomorrowException = assertThrows(TomorrowException.class,
@@ -83,7 +84,7 @@ class BoxWriteServiceTest {
         String title = "개발 공부";
         LocalTime wakeUpTime = LocalTime.of(9, 0, 0);
         LocalTime sleepTime = LocalTime.of(23, 0, 0);
-        LocalDate todayDate = LocalDate.now();
+        LocalDateTime todayDate = LocalDateTime.now();
         accountRepository.save(
             Account.singUp(phone, keyword, wakeUpTime, sleepTime));
 

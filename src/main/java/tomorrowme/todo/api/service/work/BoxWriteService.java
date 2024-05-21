@@ -20,7 +20,7 @@ public class BoxWriteService {
     private final BoxRepository boxRepository;
     private final AccountRepository accountRepository;
 
-    public void create(String phone, String keyword, String title, LocalDate registrationDate) {
+    public void create(String phone, String keyword, String title, LocalDateTime registrationDate) {
         Account account = accountRepository.findByPhoneAndKeyword(phone, keyword)
             .orElseThrow(() -> new TomorrowException(NOT_EXIST_INFO));
         try {
