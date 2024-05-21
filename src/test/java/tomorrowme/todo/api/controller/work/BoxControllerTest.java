@@ -1,4 +1,4 @@
-package tomorrowme.todo.api.controller.box;
+package tomorrowme.todo.api.controller.work;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import tomorrowme.todo.api.controller.box.dto.request.BoxCreate;
+import tomorrowme.todo.api.controller.work.dto.request.BoxCreate;
 import tomorrowme.todo.api.service.work.BoxWriteService;
 
 @WebMvcTest(controllers = BoxController.class)

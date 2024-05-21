@@ -1,4 +1,4 @@
-package tomorrowme.todo.api.controller;
+package tomorrowme.todo.api.controller.account;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalTime;

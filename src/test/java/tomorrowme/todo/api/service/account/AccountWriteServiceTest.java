@@ -1,4 +1,4 @@
-package tomorrowme.todo.api.service;
+package tomorrowme.todo.api.service.account;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
