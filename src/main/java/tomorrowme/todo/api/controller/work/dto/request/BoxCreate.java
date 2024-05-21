@@ -1,4 +1,4 @@
-package tomorrowme.todo.api.controller.box.dto.request;
+package tomorrowme.todo.api.controller.work.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
