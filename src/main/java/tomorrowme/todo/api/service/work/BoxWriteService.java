@@ -28,7 +28,7 @@ public class BoxWriteService {
         } catch (Exception e) {
             if (e instanceof DataIntegrityViolationException) {
                 String message = e.getMessage().split(":")[0];
-                if (e.getMessage().contains("Unique")) {
+                if (e.getMessage().contains("Unique") || e.getMessage().contains("Duplicate")) {
                     message = "이미 등록된 보관함이 존재합니다.";
                 }
                 throw new DataIntegrityViolationException(message);
