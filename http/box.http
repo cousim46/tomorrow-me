@@ -1,0 +1,8 @@
+POST localhost:8080/api/box
+Content-Type: application/json
+
+{
+  "phone" : "01012341234",
+  "keyword": "아으닉네임",
+  "title" : "타이틀"
+}
