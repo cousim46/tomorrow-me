@@ -27,7 +27,7 @@ public class BoxController {
 
     @PostMapping
     public void create(@Valid @RequestBody BoxCreate boxCreate) {
-        boxWriteService.create(boxCreate.phone(), boxCreate.keyword(), boxCreate.title(), LocalDateTime.now());
+        boxWriteService.create(boxCreate.phone(), boxCreate.keyword(), boxCreate.title(), LocalDate.now());
     }
 
     @GetMapping

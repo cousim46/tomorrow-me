@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public record BoxInfo(
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime registrationDate,
+    LocalDateTime createdAt,
     String  title,
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime updatedAt

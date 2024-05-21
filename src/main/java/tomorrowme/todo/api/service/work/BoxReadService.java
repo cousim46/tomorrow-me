@@ -22,7 +22,7 @@ public class BoxReadService {
         Account account = accountRepository.findByPhoneAndKeyword(phone, keyword)
             .orElseThrow(() -> new TomorrowException(NOT_EXIST_INFO));
         return boxRepository.findAllByAccountOrderByRegistrationDateDesc(account)
-            .stream().map(it -> new BoxInfo(it.getRegistrationDate(),it.getTitle(),it.getUpdatedAt()))
+            .stream().map(it -> new BoxInfo(it.getCreatedAt(),it.getTitle(),it.getUpdatedAt()))
             .collect(Collectors.toList());
     }
 }

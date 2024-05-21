@@ -3,7 +3,6 @@ package tomorrowme.todo.api.service.work;
 import static tomorrowme.todo.exception.TomorrowErrorCode.NOT_EXIST_INFO;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import tomorrowme.todo.api.service.annotation.WriteService;
@@ -20,7 +19,7 @@ public class BoxWriteService {
     private final BoxRepository boxRepository;
     private final AccountRepository accountRepository;
 
-    public void create(String phone, String keyword, String title, LocalDateTime registrationDate) {
+    public void create(String phone, String keyword, String title, LocalDate registrationDate) {
         Account account = accountRepository.findByPhoneAndKeyword(phone, keyword)
             .orElseThrow(() -> new TomorrowException(NOT_EXIST_INFO));
         try {

@@ -23,18 +23,18 @@ import tomorrowme.todo.domain.account.Account;
 )
 public class Box extends BaseEntity {
     private String title;
-    private LocalDateTime registrationDate;
+    private LocalDate registrationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Account account;
 
-    private Box(String title, Account account, LocalDateTime registrationDate) {
+    private Box(String title, Account account, LocalDate registrationDate) {
         this.title = title;
         this.account = account;
         this.registrationDate = registrationDate;
     }
 
-    public static Box create(String title,Account account, LocalDateTime registrationDate) {
+    public static Box create(String title,Account account, LocalDate registrationDate) {
         return new Box(title,account, registrationDate);
     }
 }
