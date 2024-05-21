@@ -19,7 +19,11 @@ public class AccountWriteService {
             accountRepository.save(Account.singUp(phone, keyword, wakeUpTime, sleepTime));
         } catch (Exception e) {
             if (e instanceof DataIntegrityViolationException) {
-                throw  new DataIntegrityViolationException("이미 존재하는 정보입니다.");
+                String message = e.getMessage().split(":")[0];
+                if(e.getMessage().contains("Unique")) {
+                    message = "이미 존재하는 정보입니다.";
+                }
+                throw  new DataIntegrityViolationException(message);
             }
             throw e;
         }
