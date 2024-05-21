@@ -21,7 +21,7 @@ class BoxTest {
         LocalTime wakeUpTime = LocalTime.of(9,0,0);
         LocalTime sleepTime = LocalTime.of(2,0,0);
         Account account = Account.singUp(phone, keyword, wakeUpTime, sleepTime);
-        LocalDateTime todayDate = LocalDateTime.now();
+        LocalDate todayDate = LocalDate.now();
 
         //when
         Box box = Box.create(title,account, todayDate);

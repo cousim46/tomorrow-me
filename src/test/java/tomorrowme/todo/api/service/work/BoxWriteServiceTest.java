@@ -45,7 +45,7 @@ class BoxWriteServiceTest {
         String title = "개발 공부";
         LocalTime wakeUpTime = LocalTime.of(9, 0, 0);
         LocalTime sleepTime = LocalTime.of(23, 0, 0);
-        LocalDateTime todayDate = LocalDateTime.now();
+        LocalDate todayDate = LocalDate.now();
         accountRepository.save(
             Account.singUp(phone, keyword, wakeUpTime, sleepTime));
 
@@ -57,6 +57,7 @@ class BoxWriteServiceTest {
 
         assertThat(boxes).hasSize(1);
     }
+
     @DisplayName("보관함을 생성 하는 회원이 존재하지 않으면 예외가 발생한다.")
     @Test
     void occurCreateBoxWithoutAccountException() {
@@ -64,7 +65,7 @@ class BoxWriteServiceTest {
         String phone = "01012341234";
         String keyword = "keyword";
         String title = "개발 공부";
-        LocalDateTime todayDate = LocalDateTime.now();
+        LocalDate todayDate = LocalDate.now();
 
         //when
         TomorrowException tomorrowException = assertThrows(TomorrowException.class,
@@ -84,14 +85,14 @@ class BoxWriteServiceTest {
         String title = "개발 공부";
         LocalTime wakeUpTime = LocalTime.of(9, 0, 0);
         LocalTime sleepTime = LocalTime.of(23, 0, 0);
-        LocalDateTime todayDate = LocalDateTime.now();
+        LocalDate todayDate = LocalDate.now();
         accountRepository.save(
             Account.singUp(phone, keyword, wakeUpTime, sleepTime));
 
         boxWriteService.create(phone, keyword, title, todayDate);
 
         //when
-       DataIntegrityViolationException dataIntegrityViolationException = assertThrows(
+        DataIntegrityViolationException dataIntegrityViolationException = assertThrows(
             DataIntegrityViolationException.class,
             () -> boxWriteService.create(phone, keyword, title, todayDate));
 

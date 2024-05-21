@@ -1,13 +1,10 @@
 package tomorrowme.todo.domain.work;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import org.assertj.core.api.Assertions;
-import org.assertj.core.data.Index;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,26 +35,23 @@ class BoxRepositoryTest {
         LocalTime sleepTime = LocalTime.of(23, 0, 0);
         Account savedAccount = accountRepository.save(
             Account.singUp(phone, keyword, wakeUpTime, sleepTime));
-        LocalDateTime firstBox = LocalDateTime.of(2024, 5, 1, 1, 0, 0);
-        LocalDateTime secondBox = LocalDateTime.of(2024, 5, 2, 1, 0, 0);
-        LocalDateTime thirdBox  = LocalDateTime.of(2024, 5, 1, 2, 0, 0);
+        LocalDate firstBox = LocalDate.of(2024, 5, 1);
+        LocalDate secondBox = LocalDate.of(2024, 5, 2);
 
         Box box1 = Box.create("첫번째", savedAccount, firstBox);
         Box box2 = Box.create("두번째", savedAccount, secondBox);
-        Box box3 = Box.create("세번째", savedAccount, thirdBox);
-        boxRepository.saveAll(List.of(box1, box2, box3));
+        boxRepository.saveAll(List.of(box1, box2));
 
         //when
         List<Box> boxes = boxRepository.findAllByAccountOrderByRegistrationDateDesc(
             savedAccount);
 
         //then
-        assertThat(boxes).hasSize(3)
-            .extracting("registrationDate","title")
+        assertThat(boxes).hasSize(2)
+            .extracting("createdAt","title")
             .containsExactly(
-                Tuple.tuple(secondBox,box2.getTitle()),
-                Tuple.tuple(thirdBox,box3.getTitle()),
-                Tuple.tuple(firstBox,box1.getTitle())
+                Tuple.tuple(box2.getCreatedAt(),box2.getTitle()),
+                Tuple.tuple(box1.getCreatedAt(),box1.getTitle())
                 );
     }
 }
